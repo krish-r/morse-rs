@@ -11,6 +11,56 @@ A simple program to encode to/decode from morse code.
 -   `|` is used for representing spaces in the encoded string
 -   Consecutive spaces are treated as a single space
 
+## Sections
+
+-   [Install Instructions](#install-instructions)
+-   [Uninstall Instructions](#uninstall-instructions)
+-   [Usage](#usage)
+-   [Examples](#examples)
+
+## Install Instructions
+
+-   Option 1 - using Cargo
+
+    ```sh
+    # Clone the repository
+    git clone https://github.com/krish-r/morse-rs.git
+
+    # Switch to the cloned directory
+    cd morse-rs
+
+    # Try it without installing
+    cargo run -- [OPTIONS] [Word/Sentence]
+
+    # or
+
+    # To install (the cargo bin directory `~/.cargo/bin` should be in your `$PATH`)
+    cargo install --path .
+
+    ```
+
+-   Option 2 - using the binary from the release page
+
+    ```sh
+    # Download the binary from release
+    curl -LO https://github.com/krish-r/morse-rs/releases/download/0.1.0/morse-rs_0.1.0.tar.gz
+
+    # Extract the archive
+    tar xvzf ./morse-rs_0.1.0.tar.gz && rm -ir ./morse-rs_0.1.0.tar.gz
+
+    # add executable permission to user
+    chmod u+x ./morse-rs
+
+    # Move the file somewhere in your `$PATH` (for ex. `~/.local/bin`)
+    mv ./morse-rs ~/.local/bin/morse-rs
+    ```
+
+## Uninstall instructions
+
+```sh
+rm -i $(which morse-rs)
+```
+
 ## Usage
 
 ```sh
