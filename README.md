@@ -11,7 +11,7 @@ A simple program to encode to/decode from morse code.
 -   `|` is used for representing spaces in the encoded string
 -   Consecutive spaces are treated as a single space
 
-## Sections
+## TOC
 
 -   [Install Instructions](#install-instructions)
 -   [Uninstall Instructions](#uninstall-instructions)
@@ -106,8 +106,9 @@ Options:
 -   Decoding
 
     ```sh
-    # `|` should be used as delimiter instead of space (` `)
-    morse-rs -m decode ".... . .-.. .-.. --- | .-- --- .-. .-.. -.."
+    # '|' should be used as delimiter instead of space (' ')
+    # Note the '--' between decode and input string
+    morse-rs -m decode -- ".... . .-.. .-.. --- | .-- --- .-. .-.. -.."
     ```
 
 [wikipedia]: https://en.wikipedia.org/wiki/Morse_code

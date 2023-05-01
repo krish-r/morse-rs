@@ -1,7 +1,7 @@
 use clap::{Parser, ValueEnum};
 use colored::*;
 use mapping::*;
-use std::fmt;
+use std::{fmt, process};
 
 mod mapping;
 
@@ -37,6 +37,20 @@ impl Cli {
     pub fn new() -> Self {
         Cli::parse()
     }
+
+    pub fn parse_sentence(&self) -> String {
+        match &self.sentence {
+            Some(s) => s.clone(),
+            None => {
+                println!(
+                    "{}",
+                    "Please provide a word/sentence to encode/decode".red()
+                );
+                println!("Try using {} flag for usage instructions", "--help".green());
+                process::exit(1);
+            }
+        }
+    }
 }
 
 impl Default for Cli {
@@ -57,7 +71,7 @@ pub fn encode_data(sentence: String) -> String {
                 Some(e) => encoded_word.push(e.clone()),
                 None => {
                     eprintln!(
-                        "Invalid character '{}' found in the word '{}', skipping to next word",
+                        "Invalid character '{}' found in the word '{}', skipping to next character",
                         char.to_string().red(),
                         word.red()
                     );
@@ -94,7 +108,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn validate_encoding() {
+    fn test_valid_encoding() {
         assert_eq!(
             encode_data(String::from("hello world")),
             ".... . .-.. .-.. --- | .-- --- .-. .-.. -.."
@@ -102,7 +116,7 @@ mod tests {
     }
 
     #[test]
-    fn invalidate_encoding() {
+    fn test_invalid_encoding() {
         assert_eq!(
             encode_data(String::from("he!lo world")),
             ".... . ! .-.. --- | .-- --- .-. .-.. -.."
@@ -110,7 +124,7 @@ mod tests {
     }
 
     #[test]
-    fn validate_decoding() {
+    fn test_valid_decoding() {
         assert_eq!(
             decode_data(String::from(".... . .-.. .-.. --- | .-- --- .-. .-.. -..")),
             "HELLO WORLD"
@@ -118,12 +132,22 @@ mod tests {
     }
 
     #[test]
-    fn invalidate_decoding() {
+    fn test_invalid_decoding() {
         assert_eq!(
             decode_data(String::from(
                 "...... . .-.. .-..-. --- | .-- --- .-. .-.. -.."
             )),
             "......EL.-..-.O WORLD"
         )
+    }
+
+    #[test]
+    fn test_parsing_sentence() {
+        let sentence: String = String::from("Test Sentence");
+        let cli = Cli {
+            mode: Mode::Encode,
+            sentence: Some(sentence.clone()),
+        };
+        assert_eq!(&cli.parse_sentence(), &sentence)
     }
 }

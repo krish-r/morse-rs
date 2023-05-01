@@ -44,7 +44,6 @@ pub fn generate_mapping(mapping: Mapping) -> HashMap<String, String> {
             (String::from("8"), String::from("---..")),
             (String::from("9"), String::from("----.")),
             (String::from("0"), String::from("-----")),
-            (String::from("|"), String::from("|")),
         ]),
         Mapping::DotsAndDashToStr => HashMap::from([
             (String::from(".-"), String::from("A")),
