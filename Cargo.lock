@@ -218,7 +218,7 @@ checksum = "3f508063cc7bb32987c71511216bd5a32be15bccb6a80b52df8b9d7f01fc3aa2"
 
 [[package]]
 name = "morse-rs"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "clap",
  "colored",

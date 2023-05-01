@@ -3,7 +3,7 @@ use colored::*;
 use mapping::*;
 use std::{fmt, process};
 
-mod mapping;
+pub mod mapping;
 
 /// A simple program to encode to /decode from morse code.
 #[derive(Parser)]
@@ -24,6 +24,9 @@ pub enum Mode {
 
     /// Decode to String
     Decode,
+
+    /// Print morse code mappings
+    Print,
 }
 
 impl fmt::Display for Mode {
@@ -60,7 +63,7 @@ impl Default for Cli {
 }
 
 pub fn encode_data(sentence: String) -> String {
-    let mapping = generate_mapping(Mapping::StrToDotsAndDash);
+    let mapping = Mapping::generate_mapping(Mapping::StrToDotsAndDash);
     let mut encoded_sentence = Vec::new();
     let mut encoded_word = Vec::new();
 
@@ -86,7 +89,7 @@ pub fn encode_data(sentence: String) -> String {
 }
 
 pub fn decode_data(sentence: String) -> String {
-    let mapping = generate_mapping(Mapping::DotsAndDashToStr);
+    let mapping = Mapping::generate_mapping(Mapping::DotsAndDashToStr);
     let mut decoded_sentence = Vec::new();
 
     'code_list: for code in sentence.split(' ') {

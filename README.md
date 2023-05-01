@@ -83,6 +83,7 @@ Options:
           Possible values:
           - encode: Encode to Dots and Dash
           - decode: Decode to String
+          - print:  Print morse code mappings
 
   -h, --help
           Print help (see a summary with '-h')

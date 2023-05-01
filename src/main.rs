@@ -4,15 +4,17 @@ use morse_rs::*;
 fn main() {
     let cli = Cli::new();
 
-    let parsed_data = match cli.mode {
+    match cli.mode {
         Mode::Encode => {
             let s = cli.parse_sentence();
-            encode_data(s)
+            println!("{}", encode_data(s).green())
         }
         Mode::Decode => {
             let s = cli.parse_sentence();
-            decode_data(s)
+            println!("{}", decode_data(s).green())
+        }
+        Mode::Print => {
+            mapping::Mapping::print_mappings();
         }
     };
-    println!("{}", parsed_data.green())
 }
