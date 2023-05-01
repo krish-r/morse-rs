@@ -43,10 +43,10 @@ A simple program to encode to/decode from morse code.
 
     ```sh
     # Download the binary from release
-    curl -LO https://github.com/krish-r/morse-rs/releases/download/0.1.0/morse-rs_0.1.0.tar.gz
+    curl -LO https://github.com/krish-r/morse-rs/releases/download/0.1.2/morse-rs_0.1.2.tar.gz
 
     # Extract the archive
-    tar xvzf ./morse-rs_0.1.0.tar.gz && rm -ir ./morse-rs_0.1.0.tar.gz
+    tar xvzf ./morse-rs_0.1.2.tar.gz && rm -ir ./morse-rs_0.1.2.tar.gz
 
     # add executable permission to user
     chmod u+x ./morse-rs
